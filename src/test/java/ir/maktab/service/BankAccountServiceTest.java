@@ -49,26 +49,28 @@ class BankAccountServiceTest {
         assertEquals(bankAccount1, bankAccountService.findById(1));
     }
 
-    @Test
+
+    /*@Test
     void deleteBankAccountTest() {
         BankAccount bankAccount = bankAccountService.findById(1);
         bankAccountService.delete(bankAccount);
         BankAccount bankAccount1 = bankAccountService.findById(1);
         assertNull(bankAccount1);
-    }
+    }*/
+
 
     @Test
     void withdrawTest() {
-        BankAccount bankAccount1 = bankAccountService.findById(1);
-        double balance = bankAccount1.getBalance();
+        BankAccount bankAccount = bankAccountService.findById(1);
+        double balance = bankAccount.getBalance();
         double amount = 5e6;
-        bankAccountService.withdraw(bankAccount1, amount);
+        bankAccountService.withdraw(bankAccount, amount);
         assertEquals((balance - 5e6), bankAccountService.findById(1).getBalance());
     }
 
     @Test
-    void notNegativeEmountTest() {
-        System.out.println("Running notNegativeEmountTest");
+    void notNegativeEmauntTest() {
+        System.out.println("Running notNegativeEmauntTest");
         BankAccount bankAccount = bankAccountService.findById(1);
         double balance = bankAccount.getBalance();
         double amount = -5000000.0;

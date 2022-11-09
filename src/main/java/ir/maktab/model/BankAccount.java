@@ -2,6 +2,8 @@ package ir.maktab.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,9 +11,11 @@ import java.util.Objects;
 
 @Entity
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type",discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,62 +40,6 @@ public class BankAccount {
         this.expirationDate = expirationDate;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public String getCartNumber() {
-        return cartNumber;
-    }
-
-    public void setCartNumber(String cartNumber) {
-        this.cartNumber = cartNumber;
-    }
-
-    public LocalDate getAccountOpeningDate() {
-        return accountOpeningDate;
-    }
-
-    public void setAccountOpeningDate(LocalDate accountOpeningDate) {
-        this.accountOpeningDate = accountOpeningDate;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public int getCvv2() {
-        return cvv2;
-    }
-
-    public void setCvv2(int cvv2) {
-        this.cvv2 = cvv2;
-    }
-
-    public LocalDate getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(LocalDate expirationDate) {
-        this.expirationDate = expirationDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,5 +52,4 @@ public class BankAccount {
     public int hashCode() {
         return Objects.hash(id, accountNumber, cartNumber, accountOpeningDate, cvv2, expirationDate);
     }
-
 }

@@ -11,10 +11,10 @@ import java.util.List;
 public class BankAccountRepository {
     static final SessionFactory SESSION_FACTORY = DatabaseAccess.getSessionFactory();
 
-    public int  saveBankAccount(BankAccount bankAccount) {
+    public int saveBankAccount(BankAccount bankAccount) {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
-        int id= (int) session.save(bankAccount);
+        int id = (int) session.save(bankAccount);
         transaction.commit();
         session.close();
         return id;
@@ -32,7 +32,7 @@ public class BankAccountRepository {
     public List<BankAccount> findAllBankAccount() {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
-        Query<BankAccount>query=session.createQuery("FROM BankAccount ",BankAccount.class);
+        Query<BankAccount> query = session.createQuery("FROM BankAccount ", BankAccount.class);
         List<BankAccount> BankAccountList = query.getResultList();
         transaction.commit();
         session.close();
